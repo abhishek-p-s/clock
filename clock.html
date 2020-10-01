@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+</head>
+<body style="background-color: black;">
+
+    <h1 style="margin-left: 700px; margin-top: 300px;color: aliceblue; font-size:xx-large" id="clock"></h1>
+    <script>
+        function putzero(nm){
+            return nm<10?"0"+nm:nm;
+        }
+        var time= document.getElementById("clock");
+        function showTime(){
+            var dt=new Date();
+            if(dt.getHours()<12){
+                amorpm="AM";
+            }else{
+                amorpm="PM";
+            }
+            
+            var dataString=putzero(dt.getHours()%12)  + ":" +putzero(dt.getMinutes())  + ":" +putzero(dt.getSeconds())+"  "+amorpm ;
+            time.innerHTML=dataString;
+            setTimeout(function(){
+                showTime();
+            },1000);
+
+        }
+        
+        showTime();
+
+        function play(){
+            var audio=new Audio('');
+            audio.play();
+        }
+        play();
+
+        
+    </script>
+</body>
+</html>
