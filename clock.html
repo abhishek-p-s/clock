@@ -7,8 +7,15 @@
 </head>
 <body style="background-color: black;">
 
+<div>
+<input type="button" value="PLAY A SONG" id="button">
+
+</div>
+
     <h1 style="margin-left: 700px; margin-top: 300px;color: aliceblue; font-size:xx-large" id="clock"></h1>
     <script>
+
+
         function putzero(nm){
             return nm<10?"0"+nm:nm;
         }
@@ -20,6 +27,8 @@
             }else{
                 amorpm="PM";
             }
+
+           
             
             var dataString=putzero(dt.getHours()%12)  + ":" +putzero(dt.getMinutes())  + ":" +putzero(dt.getSeconds())+"  "+amorpm ;
             time.innerHTML=dataString;
@@ -28,16 +37,29 @@
             },1000);
 
         }
+
+       
         
         showTime();
 
-        function play(){
-            var audio=new Audio('');
-            audio.play();
-        }
-        play();
 
+        function playAudio(){
+            var audio=new Audio();
+            audio.src="./audio/alarm.mp3";
+            audio.play().then()
+
+        }
+
+       
+        const button=document.getElementById("button");
+        button.addEventListener("click",()=>{
+
+        playAudio();
+
+        })
         
+        
+
     </script>
 </body>
 </html>
